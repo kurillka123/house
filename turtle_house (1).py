@@ -35,7 +35,7 @@ def draw_roof(x, y, roof_w, roof_h, roof_color, walls_w,):
     turtle.goto(x,  y)
     turtle.fd(walls_w // 2)
     turtle.fd(roof_w // 2)
-    top_x = walls_w // 2
+    top_x = x + walls_w // 2
     top_y = y + roof_h
     turtle.goto(top_x, top_y)
     left_x = top_x - roof_w // 2
@@ -44,7 +44,9 @@ def draw_roof(x, y, roof_w, roof_h, roof_color, walls_w,):
     turtle.end_fill()
 
 def draw_rectangle(x, y, width, height, color):
+    turtle.penup()
     turtle.goto(x, y)
+    turtle.pendown()
     turtle.fillcolor(color)
     turtle.begin_fill()
     turtle.fd(width)
@@ -59,7 +61,7 @@ def draw_rectangle(x, y, width, height, color):
 
 
 
-draw_house(base_color="grey")
+draw_house(x = -150, y = -150)
 
 
 turtle.done()
