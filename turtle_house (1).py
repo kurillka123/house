@@ -1,6 +1,6 @@
 import turtle 
 from random import randint
-turtle.speed(1)
+turtle.speed(-10)
 turtle.colormode(255)
 
 def draw_house(
@@ -14,7 +14,10 @@ def draw_house(
         walls_color="green",
         roof_w=120, 
         roof_h=110, 
-        roof_color="yellow"
+        roof_color="yellow",
+        door_w=100 // 2,
+        door_h=30,
+        door_color="brown"
     ):
     draw_base(x, y, base_w, base_h, base_color)
     walls_y = y + base_h 
@@ -24,11 +27,13 @@ def draw_house(
 
 def draw_base(x, y, base_w, base_h, base_color):
     print("Рисует фундамент")
-
     draw_rectangle(x, y, base_w, base_h, base_color)
 
 def draw_walls(x, y, walls_w, walls_h, walls_color):
     draw_rectangle(x, y, walls_w, walls_h, walls_color)
+
+def draw_walls(x, y, door_w, door_h, door_color):
+    draw_rectangle(x, y, door_w, door_h, door_color)
 
 
 def draw_roof(x, y, roof_w, roof_h, roof_color, walls_w,):
@@ -66,15 +71,15 @@ def draw_street(first_house_x=0, first_house_y=0, houses=10):
     counter = 0 
     while counter < houses:
         base_w=randint(50, 100)
-        walls_w=randint(base_w - 50, base_w)
-        roof_w=randint(walls_w, walls_w + 50),
+        walls_w=randint(base_w - 3, base_w)
+        roof_w=randint(walls_w, walls_w + 3)
         draw_house(
             x=first_house_x,
             y=first_house_y,
             base_h=randint(10,20),
             base_w=randint(50,100),
             base_color=(randint(0, 255), randint(0, 255), randint(0, 255)),
-            walls_h=randint(10,20),
+            walls_h=randint(50,150),
             walls_w=randint(50,100),
             walls_color=(randint(0, 255), randint(0, 255), randint(0, 255)),
             roof_w=roof_w,
